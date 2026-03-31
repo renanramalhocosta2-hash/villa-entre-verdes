@@ -11,9 +11,10 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      '/api': {
-        target: 'http://localhost:3001',
+      '/api/ical': {
+        target: 'https://www.airbnb.com',
         changeOrigin: true,
+        rewrite: () => '/calendar/ical/45199069.ics?s=53a260a065935d4529c6c952f9592644&loc',
       }
     }
   }

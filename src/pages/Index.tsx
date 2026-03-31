@@ -210,14 +210,11 @@ export default function Index() {
         </header>
 
         {/* Background */}
-        <div className="absolute inset-0 bg-[#2D5016] z-0">
-          {/* Placeholder — troque por uma imagem real */}
-          <div className="absolute inset-0 opacity-40"
-            style={{
-              backgroundImage: 'url(https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=1920&q=80)',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
+        <div className="absolute inset-0 z-0">
+          <img
+            src="/Foto capa.jpeg"
+            alt="Villa Entre Verdes"
+            className="w-full h-full object-cover object-center"
           />
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50 z-10" />
@@ -245,15 +242,15 @@ export default function Index() {
               <Calendar className="h-5 w-5 text-[#2D5016]" />
               <span className="text-sm text-gray-600">Verificar datas disponíveis</span>
             </a>
-            <a href="#sobre" className="flex-1 px-6 py-3 flex items-center gap-3 border-b sm:border-b-0 sm:border-r border-gray-200 w-full sm:w-auto hover:bg-gray-50 rounded-full transition-colors">
+            <a href="#disponibilidade" className="flex-1 px-6 py-3 flex items-center gap-3 border-b sm:border-b-0 sm:border-r border-gray-200 w-full sm:w-auto hover:bg-gray-50 rounded-full transition-colors">
               <Users className="h-5 w-5 text-[#2D5016]" />
               <span className="text-sm text-gray-600">Até 22 hóspedes / 60 convidados</span>
             </a>
-            <a href="#pacotes" className="flex-1 px-6 py-3 flex items-center gap-3 w-full sm:w-auto hover:bg-gray-50 rounded-full transition-colors">
+            <a href="#disponibilidade" className="flex-1 px-6 py-3 flex items-center gap-3 w-full sm:w-auto hover:bg-gray-50 rounded-full transition-colors">
               <PartyPopper className="h-5 w-5 text-[#2D5016]" />
               <span className="text-sm text-gray-600">Ver pacotes e eventos</span>
             </a>
-            <a href={WA_ORCAMENTO} target="_blank" rel="noopener noreferrer">
+            <a href="#disponibilidade">
               <Button className="bg-[#2D5016] hover:bg-[#2D5016]/90 text-white rounded-full px-8 py-6 font-medium w-full sm:w-auto">
                 Solicitar Orçamento
               </Button>
@@ -295,20 +292,64 @@ export default function Index() {
               Espaços únicos integrados à natureza para eventos memoráveis
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { src: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80', alt: 'Piscina privativa' },
-              { src: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80', alt: 'Área gourmet' },
-              { src: 'https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?w=800&q=80', alt: 'Suíte de luxo' },
-            ].map((img, i) => (
-              <img key={i} src={img.src} alt={img.alt}
-                className="rounded-2xl shadow-card w-full h-64 object-cover hover:shadow-luxury transition-shadow duration-300"
-              />
-            ))}
+          {/* Linha 1: 3 fotos */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <img src="/Piscina+jardim.jpeg" alt="Área gourmet e piscina"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/JARDIM.jpeg" alt="Jardim tropical"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/Quadrabeach.jpeg" alt="Quadra de areia iluminada"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
           </div>
-          <p className="text-center text-sm text-gray-400 mt-4">
-            * Fotos ilustrativas — substitua pelas fotos reais da villa
-          </p>
+          {/* Linha 2: 3 fotos */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <img src="/SalaTV1.jpeg" alt="Sala de estar"
+              className="rounded-2xl shadow-card w-full h-64 object-cover hover:shadow-luxury transition-shadow duration-300" style={{ objectPosition: 'center 60%' }} />
+            <img src="/salaodejogos.jpg" alt="Salão de jogos"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/Sauna+Jacuzzi.jpeg" alt="Jacuzzi e sauna"
+              className="rounded-2xl shadow-card w-full h-64 object-cover hover:shadow-luxury transition-shadow duration-300" style={{ objectPosition: 'center 60%' }} />
+          </div>
+        </div>
+      </section>
+
+      {/* ── Suítes ────────────────────────────────────────────────────────── */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-garamond font-bold text-[#2D5016] mb-4">Acomodações</h2>
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+              7 suítes e 1 quarto com banheiro privativo — cada espaço pensado para proporcionar conforto, leveza e tranquilidade.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="rounded-2xl overflow-hidden shadow-card hover:shadow-luxury transition-shadow duration-300">
+              <img
+                src="/Villa Stories - 20.jpg"
+                alt="Suíte Paraíso"
+                className="w-full h-80 object-cover"
+              />
+              <div className="p-6 bg-[#FAFAF7]">
+                <h3 className="text-2xl font-garamond font-bold text-[#2D5016] mb-2">Suíte Paraíso</h3>
+                <p className="text-gray-500 text-sm">
+                  Recém-reformada, com vista privilegiada para a natureza, cama queen de alto padrão e banheiro totalmente novo. Cada detalhe pensado para proporcionar conforto e tranquilidade.
+                </p>
+              </div>
+            </div>
+            <div className="rounded-2xl overflow-hidden shadow-card hover:shadow-luxury transition-shadow duration-300">
+              <img
+                src="/Villa Stories - 23.jpg"
+                alt="Suíte Villa"
+                className="w-full h-80 object-cover"
+              />
+              <div className="p-6 bg-[#FAFAF7]">
+                <h3 className="text-2xl font-garamond font-bold text-[#2D5016] mb-2">Suítes da Villa</h3>
+                <p className="text-gray-500 text-sm">
+                  Ambientes aconchegantes com decoração autêntica, ar-condicionado e toda a infraestrutura para uma estadia inesquecível entre a natureza da Riviera.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
