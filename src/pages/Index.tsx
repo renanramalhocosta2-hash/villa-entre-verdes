@@ -313,6 +313,40 @@ export default function Index() {
         </div>
       </section>
 
+      {/* ── Tour em Vídeo ─────────────────────────────────────────────────── */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-garamond font-bold text-[#2D5016] mb-4">Tour pela Villa</h2>
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+              Explore cada espaço da Villa Entre Verdes antes de chegar
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center">
+            {[
+              { code: 'DWB4WZTEhGT', label: 'Área externa' },
+              { code: 'DWEi6jrEmlm', label: 'Casa principal' },
+              { code: 'DWHDnVLEj_u', label: 'Salão de jogos + Suítes' },
+            ].map(({ code, label }) => (
+              <div key={code} className="flex flex-col items-center gap-3 w-full max-w-[340px]">
+                <iframe
+                  src={`https://www.instagram.com/reel/${code}/embed/`}
+                  width="340"
+                  height="600"
+                  frameBorder="0"
+                  scrolling="no"
+                  allowTransparency={true}
+                  allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                  className="rounded-2xl shadow-card w-full"
+                  title={`Tour Villa Entre Verdes — ${label}`}
+                />
+                <p className="text-sm font-medium text-[#2D5016]">{label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Suítes ────────────────────────────────────────────────────────── */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -552,11 +586,11 @@ export default function Index() {
                 <p className="font-semibold mb-1">WhatsApp</p>
                 <p className="text-sm opacity-90">(11) 99022-2000</p>
               </a>
-              <a href="mailto:contato@villaentreverdes.com"
+              <a href="mailto:villaentreverdes@hotmail.com"
                 className="bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-xl p-6 transition-colors block">
                 <Mail className="h-8 w-8 mx-auto mb-3" />
                 <p className="font-semibold mb-1">E-mail</p>
-                <p className="text-sm opacity-90">contato@villaentreverdes.com</p>
+                <p className="text-sm opacity-90">villaentreverdes@hotmail.com</p>
               </a>
               <a href="https://instagram.com/villaentreverdes" target="_blank" rel="noopener noreferrer"
                 className="bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-xl p-6 transition-colors block">
