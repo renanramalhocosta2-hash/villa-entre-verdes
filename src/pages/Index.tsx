@@ -3,7 +3,7 @@ import {
   MapPin, Users, Home, Star, Phone, Mail, Car, Waves, TreePine,
   Camera, MessageCircle, Heart, Briefcase, Utensils, Wifi, Wind,
   Tv, Shield, ChefHat, Music, Calendar, Clock, PartyPopper,
-  Dumbbell, Sparkles, Menu, X,
+  Dumbbell, Sparkles, Menu, X, Award, Bike, Microscope, Leaf,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -442,6 +442,96 @@ export default function Index() {
               </Card>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── Riviera de São Lourenço ───────────────────────────────────────── */}
+      <section className="py-20 bg-[#F4F1EB]">
+        <div className="container mx-auto px-4">
+
+          {/* Cabeçalho */}
+          <div className="text-center mb-4">
+            <span className="inline-flex items-center gap-2 bg-[#2D5016] text-white text-xs font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-6">
+              <Award className="h-3.5 w-3.5" /> ISO 14001 — Certificação Mundial
+            </span>
+            <h2 className="text-4xl md:text-5xl font-garamond font-bold text-[#2D5016] mb-4">
+              A Riviera de São Lourenço
+            </h2>
+            <p className="text-xl text-[#B8860B] font-garamond italic mb-4">
+              Mais do que uma praia. Um projeto único no mundo.
+            </p>
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+              O bairro mais especial do litoral brasileiro — e a Villa Entre Verdes está no coração dele.
+            </p>
+          </div>
+
+          {/* Grid de diferenciais */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-14">
+            {[
+              {
+                icon: Leaf,
+                color: '#2D5016',
+                bg: 'bg-green-50',
+                title: 'Pioneirismo Mundial em Sustentabilidade',
+                text: 'Em 2000, a Riviera se tornou o primeiro projeto de desenvolvimento urbano do mundo a receber a certificação ISO 14001 de gestão ambiental — renovada ininterruptamente por mais de 23 anos.',
+              },
+              {
+                icon: Shield,
+                color: '#2D5016',
+                bg: 'bg-green-50',
+                title: 'Segurança de Alto Nível',
+                text: 'Acesso controlado 24h, câmeras em toda a extensão do bairro — inclusive na orla e na areia da praia — e cerca de 250 profissionais de segurança privada em parceria com as polícias Civil, Militar e Corpo de Bombeiros.',
+              },
+              {
+                icon: Waves,
+                color: '#2D5016',
+                bg: 'bg-green-50',
+                title: '4,5 km de Praia Pristina',
+                text: 'Maior projeto de desenvolvimento urbano do litoral brasileiro: 9 milhões de m² de área planejada, areia branca, bandeira verde da CETESB, mar calmo e sem poluição.',
+              },
+              {
+                icon: TreePine,
+                color: '#2D5016',
+                bg: 'bg-green-50',
+                title: '80% de Natureza Preservada',
+                text: 'Mata Atlântica, trilhas e áreas verdes cobrem 80% do território. Mais de 45 mil mudas de espécies nativas plantadas nos últimos anos. Um bairro dentro da floresta.',
+              },
+              {
+                icon: Microscope,
+                color: '#2D5016',
+                bg: 'bg-green-50',
+                title: 'Tecnologia e Infraestrutura de Excelência',
+                text: 'Sistema de tratamento de esgoto desenvolvido em parceria com o MIT (EUA), com capacidade de 12 mil m³/dia. Em mais de 40 anos, a Riviera nunca sofreu falta d\'água, enchentes ou poluição da praia.',
+              },
+              {
+                icon: Bike,
+                color: '#2D5016',
+                bg: 'bg-green-50',
+                title: 'Qualidade de Vida Completa',
+                text: '7+ km de ciclovias, restaurantes, Riviera Shopping, escolas, clínicas 24h, beach tennis, hipismo, golfe, surf e muito mais — a apenas 120 km de São Paulo.',
+              },
+            ].map((item, i) => (
+              <Card key={i} className={`${item.bg} border-0 shadow-card hover:shadow-luxury transition-all duration-300 hover:-translate-y-1`}>
+                <CardContent className="p-7">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="bg-white rounded-full p-2 shadow-sm">
+                      <item.icon className="h-6 w-6" style={{ color: item.color }} />
+                    </div>
+                    <h3 className="font-garamond font-bold text-lg text-[#1A1A1A] leading-tight">{item.title}</h3>
+                  </div>
+                  <p className="text-gray-500 text-sm leading-relaxed">{item.text}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          {/* Frase de encerramento */}
+          <div className="mt-14 text-center">
+            <p className="text-2xl font-garamond italic text-[#2D5016] max-w-2xl mx-auto leading-relaxed">
+              "Hospedar-se na Villa Entre Verdes é viver tudo isso de dentro."
+            </p>
+          </div>
+
         </div>
       </section>
 
