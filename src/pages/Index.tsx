@@ -237,24 +237,45 @@ export default function Index() {
 
         {/* Bottom booking bar */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 w-full max-w-4xl px-4">
-          <div className="bg-white/95 backdrop-blur-sm rounded-full shadow-luxury p-2 flex flex-col sm:flex-row items-center gap-2 sm:gap-0">
-            <a href="#disponibilidade" className="flex-1 px-6 py-3 flex items-center gap-3 border-b sm:border-b-0 sm:border-r border-gray-200 w-full sm:w-auto hover:bg-gray-50 rounded-full transition-colors">
-              <Calendar className="h-5 w-5 text-[#2D5016]" />
-              <span className="text-sm text-gray-600">Verificar datas disponíveis</span>
-            </a>
-            <a href="#disponibilidade" className="flex-1 px-6 py-3 flex items-center gap-3 border-b sm:border-b-0 sm:border-r border-gray-200 w-full sm:w-auto hover:bg-gray-50 rounded-full transition-colors">
-              <Users className="h-5 w-5 text-[#2D5016]" />
-              <span className="text-sm text-gray-600">Até 22 hóspedes / 60 convidados</span>
-            </a>
-            <a href="#disponibilidade" className="flex-1 px-6 py-3 flex items-center gap-3 w-full sm:w-auto hover:bg-gray-50 rounded-full transition-colors">
-              <PartyPopper className="h-5 w-5 text-[#2D5016]" />
-              <span className="text-sm text-gray-600">Ver pacotes e eventos</span>
-            </a>
-            <a href="#disponibilidade">
-              <Button className="bg-[#2D5016] hover:bg-[#2D5016]/90 text-white rounded-full px-8 py-6 font-medium w-full sm:w-auto">
-                Solicitar Orçamento
-              </Button>
-            </a>
+          <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-luxury overflow-hidden">
+            {/* Mobile: botão único */}
+            <div className="flex sm:hidden flex-col">
+              <div className="grid grid-cols-2 divide-x divide-gray-200 border-b border-gray-200">
+                <a href="#disponibilidade" className="flex items-center gap-2 px-4 py-3 hover:bg-gray-50 transition-colors">
+                  <Calendar className="h-4 w-4 text-[#2D5016] shrink-0" />
+                  <span className="text-xs text-gray-600 leading-tight">Verificar datas</span>
+                </a>
+                <a href="#disponibilidade" className="flex items-center gap-2 px-4 py-3 hover:bg-gray-50 transition-colors">
+                  <Users className="h-4 w-4 text-[#2D5016] shrink-0" />
+                  <span className="text-xs text-gray-600 leading-tight">Até 22 hóspedes</span>
+                </a>
+              </div>
+              <a href="#disponibilidade" className="block">
+                <Button className="w-full bg-[#2D5016] hover:bg-[#2D5016]/90 text-white rounded-none py-4 font-medium text-sm">
+                  Solicitar Orçamento
+                </Button>
+              </a>
+            </div>
+            {/* Desktop: layout horizontal */}
+            <div className="hidden sm:flex items-stretch divide-x divide-gray-200">
+              <a href="#disponibilidade" className="flex-1 px-6 py-4 flex items-center gap-3 hover:bg-gray-50 transition-colors">
+                <Calendar className="h-5 w-5 text-[#2D5016] shrink-0" />
+                <span className="text-sm text-gray-600">Verificar datas disponíveis</span>
+              </a>
+              <a href="#disponibilidade" className="flex-1 px-6 py-4 flex items-center gap-3 hover:bg-gray-50 transition-colors">
+                <Users className="h-5 w-5 text-[#2D5016] shrink-0" />
+                <span className="text-sm text-gray-600">Até 22 hóspedes / 60 convidados</span>
+              </a>
+              <a href="#disponibilidade" className="flex-1 px-6 py-4 flex items-center gap-3 hover:bg-gray-50 transition-colors">
+                <PartyPopper className="h-5 w-5 text-[#2D5016] shrink-0" />
+                <span className="text-sm text-gray-600">Ver pacotes e eventos</span>
+              </a>
+              <a href="#disponibilidade" className="shrink-0">
+                <Button className="h-full bg-[#2D5016] hover:bg-[#2D5016]/90 text-white rounded-none px-8 font-medium">
+                  Solicitar Orçamento
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -632,6 +653,97 @@ export default function Index() {
                 </Card>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Depoimentos ───────────────────────────────────────────────────── */}
+      <section className="py-20 bg-[#F4F1EB]">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <div className="flex items-center justify-center gap-1 mb-4">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="h-5 w-5 fill-[#B8860B] text-[#B8860B]" />
+              ))}
+            </div>
+            <h2 className="text-4xl font-garamond font-bold text-[#2D5016] mb-4">O que dizem nossos hóspedes</h2>
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+              Avaliações reais do Airbnb — de hóspedes que viveram a experiência Villa Entre Verdes
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                name: 'Martin',
+                period: '2 semanas atrás · Airbnb',
+                stars: 5,
+                text: 'Nossa estadia foi simplesmente impecável! A casa é maravilhosa, extremamente espaçosa, muito bem cuidada e ainda mais bonita pessoalmente do que nas fotos. Foi uma experiência realmente especial, que proporciona momentos inesquecíveis. Dá para sentir o cuidado em cada detalhe. Sem dúvida, uma das melhores experiências que já tivemos. Recomendo de olhos fechados!',
+              },
+              {
+                name: 'Thais',
+                period: 'Outubro de 2025 · Airbnb',
+                stars: 5,
+                text: 'Anfitriões super acessíveis e amáveis, a propriedade é incrível, com uma área de lazer com sauna, piscina aquecida, jacuzzi, quadra de areia e mesa de sinuca. Pegamos dois dias chuvosos, mas a casa é tão boa que a chuva nem atrapalhou. O acesso à praia é tranquilo, uns 450m de caminhada.',
+              },
+              {
+                name: 'Caio',
+                period: 'Agosto de 2025 · Airbnb',
+                stars: 5,
+                text: 'Atendimento a nível VIP feito pela Erica e pelo Gustavo. Estadia excelente, casa incrível e com o melhor suporte que se pode oferecer. Uma menção honrosa para dona Lucia, caseira do lugar e cozinheira durante nossa estadia, que nos fez ter uma experiência de hotel 5 estrelas.',
+              },
+              {
+                name: 'Aloisio',
+                period: 'Julho de 2025 · Airbnb',
+                stars: 5,
+                text: 'A casa é muito legal e bem equipada e acomodou muito bem nossa família de 18. A Lúcia foi muito atenciosa e estava sempre pronta para nos ajudar. Recomendamos 100% e vamos voltar com certeza. Muito obrigado!',
+              },
+              {
+                name: 'Dario',
+                period: 'Outubro de 2025 · Airbnb',
+                stars: 5,
+                text: 'Os anfitriões foram perfeitos desde o início da reserva até o check-out. A casa é maravilhosa, a cozinha é muito bem equipada e as indicações dadas foram perfeitas. Voltaremos mais vezes, com certeza. Recomendamos muito.',
+              },
+              {
+                name: 'Gabriel',
+                period: 'Novembro de 2024 · Airbnb',
+                stars: 5,
+                text: 'A casa é toda nova e possui uma área de lazer dificilmente encontrada em outros imóveis, que vai desde piscina com sauna a uma quadra de beach tênis. Acomodou muito bem nosso grupo de cerca de 20 pessoas. Recomendo.',
+              },
+            ].map((review, i) => (
+              <Card key={i} className="bg-white border-0 shadow-card hover:shadow-luxury transition-all duration-300 hover:-translate-y-1">
+                <CardContent className="p-7 flex flex-col gap-4">
+                  {/* Estrelas */}
+                  <div className="flex gap-0.5">
+                    {[...Array(review.stars)].map((_, j) => (
+                      <Star key={j} className="h-4 w-4 fill-[#B8860B] text-[#B8860B]" />
+                    ))}
+                  </div>
+                  {/* Texto */}
+                  <p className="text-gray-600 text-sm leading-relaxed flex-1">
+                    "{review.text}"
+                  </p>
+                  {/* Autor */}
+                  <div className="border-t border-gray-100 pt-4 flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-full bg-[#2D5016]/10 flex items-center justify-center text-[#2D5016] font-bold text-sm shrink-0">
+                      {review.name[0]}
+                    </div>
+                    <div>
+                      <p className="font-semibold text-[#1A1A1A] text-sm">{review.name}</p>
+                      <p className="text-xs text-gray-400">{review.period}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <a href={WA_ORCAMENTO} target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="bg-[#2D5016] hover:bg-[#2D5016]/90 text-white rounded-full px-10 py-4 font-semibold">
+                Quero viver essa experiência
+              </Button>
+            </a>
           </div>
         </div>
       </section>
