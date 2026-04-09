@@ -132,7 +132,7 @@ const extraServices = [
   { name: 'Café da Manhã Completo', price: 'Por pessoa/dia' },
   { name: 'Chef exclusivo para almoço/jantar', price: 'Sob consulta' },
   { name: 'BarMan & Coquetelaria', price: 'Por hora' },
-  { name: 'Massagem e Spa Relax', price: 'A partir de R$ 150 por pessoa' },
+  { name: 'Massagem e Spa Relax', price: 'Sob consulta' },
   { name: 'Decoração temática', price: 'Sob consulta' },
   { name: 'Equipe de fotografia e vídeo', price: 'Sob consulta' },
   { name: 'Serviço de limpeza durante o evento', price: 'Por hora' },
