@@ -4,6 +4,7 @@ import {
   Camera, MessageCircle, Heart, Briefcase, Utensils, Wifi, Wind,
   Tv, Shield, ChefHat, Music, Calendar, Clock, PartyPopper,
   Dumbbell, Sparkles, Menu, X, Award, Bike, Microscope, Leaf,
+  BedDouble, Flame, Bath, Activity, Gamepad2, Thermometer,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -280,6 +281,33 @@ export default function Index() {
         </div>
       </section>
 
+      {/* ── Atrativos strip ──────────────────────────────────────────────── */}
+      <section className="bg-white border-b border-gray-100 py-6">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-start md:justify-center gap-6 md:gap-10 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
+            {[
+              { icon: BedDouble,      label: '8 Quartos' },
+              { icon: Bath,           label: '11 Banheiros' },
+              { icon: Users,          label: 'Até 22 hóspedes' },
+              { icon: Waves,          label: 'Piscina aquecida' },
+              { icon: Thermometer,    label: 'Sauna e Jacuzzi' },
+              { icon: Activity,       label: 'Quadra de Beach Tennis' },
+              { icon: Gamepad2,       label: 'Sinuca' },
+              { icon: Flame,          label: 'Churrasqueira' },
+              { icon: Car,            label: 'Estacionamento' },
+              { icon: Shield,         label: 'Segurança 24h' },
+              { icon: Wifi,           label: 'Wi-Fi' },
+              { icon: ChefHat,        label: 'Cozinha completa' },
+            ].map(({ icon: Icon, label }, i) => (
+              <div key={i} className="flex flex-col items-center gap-2 shrink-0">
+                <Icon className="h-7 w-7 text-[#2D5016]" strokeWidth={1.5} />
+                <span className="text-[11px] text-gray-500 font-medium text-center whitespace-nowrap">{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── Apresentação ─────────────────────────────────────────────────── */}
       <section id="sobre" className="py-20 bg-white">
         <div className="container mx-auto px-4">
@@ -374,36 +402,28 @@ export default function Index() {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-garamond font-bold text-[#2D5016] mb-4">Acomodações</h2>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              7 suítes e 1 quarto com banheiro privativo — cada espaço pensado para proporcionar conforto, leveza e tranquilidade.
+              7 suítes e 1 quarto com banheiro privativo — cada espaço com nome, personalidade e conforto próprios.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="rounded-2xl overflow-hidden shadow-card hover:shadow-luxury transition-shadow duration-300">
-              <img
-                src="/Villa Stories - 20.jpg"
-                alt="Suíte Paraíso"
-                className="w-full h-80 object-cover"
-              />
-              <div className="p-6 bg-[#FAFAF7]">
-                <h3 className="text-2xl font-garamond font-bold text-[#2D5016] mb-2">Suíte Paraíso</h3>
-                <p className="text-gray-500 text-sm">
-                  Recém-reformada, com vista privilegiada para a natureza, cama queen de alto padrão e banheiro totalmente novo. Cada detalhe pensado para proporcionar conforto e tranquilidade.
-                </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { src: '/Villa Stories - 20.jpg', nome: 'Suíte Paraíso',        desc: 'Cama queen, banheiro renovado, ar-condicionado e vista privilegiada para a natureza.' },
+              { src: '/Villa Stories - 21.jpg', nome: 'Quarto Praiamar',       desc: 'Cama de casal, banheiro externo privativo, ar-condicionado, espaçoso e luminoso.' },
+              { src: '/Villa Stories - 22.jpg', nome: 'Suíte Horizonte Azul',  desc: '3 bicamas (6 camas de solteiro), ar-condicionado e ambiente sereno inspirado nas cores do mar.' },
+              { src: '/Villa Stories - 23.jpg', nome: 'Suíte Horizonte Verde', desc: '2 bicamas (4 camas de solteiro), ar-condicionado e sacada com vista para a área de lazer.' },
+              { src: '/Villa Stories - 24.jpg', nome: 'Suíte Horizonte Rosa',  desc: '2 bicamas (4 camas de solteiro), ar-condicionado e sacada com vista para a área de lazer.' },
+              { src: '/Villa Stories - 25.jpg', nome: 'Suíte Pôr do Sol',      desc: '2 bicamas (4 camas de solteiro), ar-condicionado, vista encantadora para a natureza e banheiro reformado.' },
+              { src: '/Villa Stories - 26.jpg', nome: 'Suíte Araucária',       desc: '2 bicamas (4 camas de solteiro), ar-condicionado e banheiro privativo.' },
+              { src: '/Villa Stories - 27.jpg', nome: 'Suíte Terra',           desc: '2 bicamas (4 camas de solteiro), ar-condicionado e banheiro privativo.' },
+            ].map((q, i) => (
+              <div key={i} className="rounded-2xl overflow-hidden shadow-card hover:shadow-luxury transition-all duration-300 hover:-translate-y-1 bg-[#FAFAF7]">
+                <img src={q.src} alt={q.nome} className="w-full h-72 object-cover object-center" />
+                <div className="p-5">
+                  <h3 className="font-garamond font-bold text-lg text-[#2D5016] mb-1">{q.nome}</h3>
+                  <p className="text-gray-500 text-xs leading-relaxed">{q.desc}</p>
+                </div>
               </div>
-            </div>
-            <div className="rounded-2xl overflow-hidden shadow-card hover:shadow-luxury transition-shadow duration-300">
-              <img
-                src="/Villa Stories - 23.jpg"
-                alt="Suíte Villa"
-                className="w-full h-80 object-cover"
-              />
-              <div className="p-6 bg-[#FAFAF7]">
-                <h3 className="text-2xl font-garamond font-bold text-[#2D5016] mb-2">Suítes da Villa</h3>
-                <p className="text-gray-500 text-sm">
-                  Ambientes aconchegantes com decoração autêntica, ar-condicionado e toda a infraestrutura para uma estadia inesquecível entre a natureza da Riviera.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
