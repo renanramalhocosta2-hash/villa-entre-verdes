@@ -214,7 +214,7 @@ export default function Index() {
         <div className="absolute inset-0 z-0">
           <img
             src="/Foto capa.jpeg"
-            alt="Villa Entre Verdes"
+            alt="Villa Entre Verdes – casa de aluguel de temporada para grupos em Riviera de São Lourenço, Bertioga/SP"
             className="w-full h-full object-cover object-center"
           />
         </div>
@@ -222,12 +222,12 @@ export default function Index() {
 
         {/* Hero text */}
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4">
-          <p className="text-white/80 text-sm uppercase tracking-[0.3em] mb-4">Riviera de São Lourenço · SP</p>
+          <p className="text-white/80 text-sm uppercase tracking-[0.3em] mb-4">Riviera de São Lourenço · Bertioga · SP</p>
           <h1 className="text-white text-5xl md:text-7xl font-garamond font-semibold mb-6 leading-tight drop-shadow-lg">
             Villa Entre Verdes
           </h1>
           <p className="text-white/90 text-lg md:text-xl max-w-xl mb-8">
-            Exclusividade, conforto e natureza para experiências que você nunca vai esquecer.
+            Aluguel de temporada para grupos em Riviera de São Lourenço. Até 22 hóspedes, piscina privativa, área verde e experiência de alto padrão a 120 km de São Paulo.
           </p>
           <a href="#disponibilidade">
             <Button size="lg" className="bg-white text-[#2D5016] hover:bg-white/90 font-semibold px-8 py-6 text-base rounded-full shadow-luxury">
@@ -312,10 +312,9 @@ export default function Index() {
       <section id="sobre" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-garamond font-bold text-[#2D5016] mb-4">Apresentação da Villa</h2>
+            <h2 className="text-4xl font-garamond font-bold text-[#2D5016] mb-4">A melhor casa para grupos grandes no litoral paulista</h2>
             <p className="text-lg text-gray-500 max-w-3xl mx-auto">
-              Exclusividade, conforto e natureza em um só lugar. Estrutura completa para eventos inesquecíveis
-              na Riviera de São Lourenço.
+              A Villa Entre Verdes é a escolha ideal para quem busca aluguel de temporada em Riviera de São Lourenço com privacidade, exclusividade e estrutura de alto padrão. Espaço completo para famílias numerosas, confraternizações e retiros corporativos em Bertioga/SP.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -336,27 +335,27 @@ export default function Index() {
       <section className="py-20 bg-gradient-card">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-garamond font-bold text-[#2D5016] mb-4">Conheça Nossa Estrutura</h2>
+            <h2 className="text-4xl font-garamond font-bold text-[#2D5016] mb-4">Estrutura completa para até 22 hóspedes e 50 pessoas em eventos</h2>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              Espaços únicos integrados à natureza para eventos memoráveis
+              Espaços únicos integrados à natureza na Riviera de São Lourenço — ideais para grupos grandes, famílias e confraternizações em Bertioga/SP.
             </p>
           </div>
           {/* Linha 1: 3 fotos */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-            <img src="/Piscina+jardim.jpeg" alt="Área gourmet e piscina"
+            <img src="/Piscina+jardim.jpeg" alt="Piscina aquecida e área gourmet da Villa Entre Verdes em Riviera de São Lourenço"
               className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
-            <img src="/JARDIM.jpeg" alt="Jardim tropical"
+            <img src="/JARDIM.jpeg" alt="Jardim tropical preservado da Villa Entre Verdes em Bertioga SP"
               className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
-            <img src="/Quadrabeach.jpeg" alt="Quadra de areia iluminada"
+            <img src="/Quadrabeach.jpeg" alt="Quadra de beach tennis iluminada para grupos na Riviera de São Lourenço"
               className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
           </div>
           {/* Linha 2: 3 fotos */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <img src="/SalaTV1.jpeg" alt="Sala de estar"
+            <img src="/SalaTV1.jpeg" alt="Sala de estar de alto padrão da Villa Entre Verdes em Bertioga"
               className="rounded-2xl shadow-card w-full h-64 object-cover hover:shadow-luxury transition-shadow duration-300" style={{ objectPosition: 'center 60%' }} />
-            <img src="/salaodejogos.jpg" alt="Salão de jogos"
+            <img src="/salaodejogos.jpg" alt="Salão de jogos com sinuca – Villa Entre Verdes, Riviera de São Lourenço"
               className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
-            <img src="/Sauna+Jacuzzi.jpeg" alt="Jacuzzi e sauna"
+            <img src="/Sauna+Jacuzzi.jpeg" alt="Sauna e jacuzzi privativa da Villa Entre Verdes em Riviera de São Lourenço"
               className="rounded-2xl shadow-card w-full h-64 object-cover hover:shadow-luxury transition-shadow duration-300" style={{ objectPosition: 'center 60%' }} />
           </div>
         </div>
@@ -400,24 +399,24 @@ export default function Index() {
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-garamond font-bold text-[#2D5016] mb-4">Acomodações</h2>
+            <h2 className="text-4xl font-garamond font-bold text-[#2D5016] mb-4">8 quartos para grupos grandes com privacidade e alto padrão</h2>
             <p className="text-lg text-gray-500 max-w-2xl mx-auto">
-              7 suítes e 1 quarto com banheiro privativo — cada espaço com nome, personalidade e conforto próprios.
+              7 suítes e 1 quarto com banheiro privativo — cada espaço com nome, personalidade e conforto próprios. Ideal para famílias numerosas e grupos em aluguel de temporada na Riviera de São Lourenço.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { src: '/Villa Stories - 20.jpg', nome: 'Suíte Paraíso',        desc: 'Cama queen, banheiro renovado, ar-condicionado e vista privilegiada para a natureza.' },
-              { src: '/Villa Stories - 21.jpg', nome: 'Quarto Praiamar',       desc: 'Cama de casal, banheiro externo privativo, ar-condicionado, espaçoso e luminoso.' },
-              { src: '/Villa Stories - 22.jpg', nome: 'Suíte Horizonte Azul',  desc: '3 bicamas (6 camas de solteiro), ar-condicionado e ambiente sereno inspirado nas cores do mar.' },
-              { src: '/Villa Stories - 23.jpg', nome: 'Suíte Horizonte Verde', desc: '2 bicamas (4 camas de solteiro), ar-condicionado e sacada com vista para a área de lazer.' },
-              { src: '/Villa Stories - 24.jpg', nome: 'Suíte Horizonte Rosa',  desc: '2 bicamas (4 camas de solteiro), ar-condicionado e sacada com vista para a área de lazer.' },
-              { src: '/Villa Stories - 25.jpg', nome: 'Suíte Pôr do Sol',      desc: '2 bicamas (4 camas de solteiro), ar-condicionado, vista encantadora para a natureza e banheiro reformado.' },
-              { src: '/Villa Stories - 26.jpg', nome: 'Suíte Araucária',       desc: '2 bicamas (4 camas de solteiro), ar-condicionado e banheiro privativo.' },
-              { src: '/Villa Stories - 27.jpg', nome: 'Suíte Terra',           desc: '2 bicamas (4 camas de solteiro), ar-condicionado e banheiro privativo.' },
+              { src: '/Villa Stories - 20.jpg', nome: 'Suíte Paraíso',        desc: 'Cama queen, banheiro renovado, ar-condicionado e vista privilegiada para a natureza.',              alt: 'Suíte Paraíso – acomodação de luxo na Villa Entre Verdes, Riviera de São Lourenço' },
+              { src: '/Villa Stories - 21.jpg', nome: 'Quarto Praiamar',       desc: 'Cama de casal, banheiro externo privativo, ar-condicionado, espaçoso e luminoso.',                alt: 'Quarto Praiamar com cama de casal – Villa Entre Verdes, Bertioga SP' },
+              { src: '/Villa Stories - 22.jpg', nome: 'Suíte Horizonte Azul',  desc: '3 bicamas (6 camas de solteiro), ar-condicionado e ambiente sereno inspirado nas cores do mar.',  alt: 'Suíte Horizonte Azul para grupos – aluguel de temporada Riviera de São Lourenço' },
+              { src: '/Villa Stories - 23.jpg', nome: 'Suíte Horizonte Verde', desc: '2 bicamas (4 camas de solteiro), ar-condicionado e sacada com vista para a área de lazer.',      alt: 'Suíte Horizonte Verde com sacada – Villa Entre Verdes, Riviera de São Lourenço' },
+              { src: '/Villa Stories - 24.jpg', nome: 'Suíte Horizonte Rosa',  desc: '2 bicamas (4 camas de solteiro), ar-condicionado e sacada com vista para a área de lazer.',      alt: 'Suíte Horizonte Rosa com sacada – Villa Entre Verdes, Riviera de São Lourenço' },
+              { src: '/Villa Stories - 25.jpg', nome: 'Suíte Pôr do Sol',      desc: '2 bicamas (4 camas de solteiro), ar-condicionado, vista encantadora para a natureza e banheiro reformado.', alt: 'Suíte Pôr do Sol – quarto com vista para natureza, Villa Entre Verdes Bertioga' },
+              { src: '/Villa Stories - 26.jpg', nome: 'Suíte Araucária',       desc: '2 bicamas (4 camas de solteiro), ar-condicionado e banheiro privativo.',                          alt: 'Suíte Araucária com banheiro privativo – Villa Entre Verdes, Riviera de São Lourenço' },
+              { src: '/Villa Stories - 27.jpg', nome: 'Suíte Terra',           desc: '2 bicamas (4 camas de solteiro), ar-condicionado e banheiro privativo.',                          alt: 'Suíte Terra – acomodação para grupos na Villa Entre Verdes, Bertioga SP' },
             ].map((q, i) => (
               <div key={i} className="rounded-2xl overflow-hidden shadow-card hover:shadow-luxury transition-all duration-300 hover:-translate-y-1 bg-[#FAFAF7]">
-                <img src={q.src} alt={q.nome} className="w-full h-72 object-cover object-center" />
+                <img src={q.src} alt={q.alt} className="w-full h-72 object-cover object-center" />
                 <div className="p-5">
                   <h3 className="font-garamond font-bold text-lg text-[#2D5016] mb-1">{q.nome}</h3>
                   <p className="text-gray-500 text-xs leading-relaxed">{q.desc}</p>
