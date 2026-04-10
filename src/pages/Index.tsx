@@ -406,23 +406,58 @@ export default function Index() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { src: '/Villa Stories - 20.jpg', nome: 'Suíte Paraíso',        desc: 'Cama queen, banheiro renovado, ar-condicionado e vista privilegiada para a natureza.',              alt: 'Suíte Paraíso – acomodação de luxo na Villa Entre Verdes, Riviera de São Lourenço' },
-              { src: '/Villa Stories - 21.jpg', nome: 'Quarto Praiamar',       desc: 'Cama de casal, banheiro externo privativo, ar-condicionado, espaçoso e luminoso.',                alt: 'Quarto Praiamar com cama de casal – Villa Entre Verdes, Bertioga SP' },
-              { src: '/Villa Stories - 22.jpg', nome: 'Suíte Horizonte Azul',  desc: '3 bicamas (6 camas de solteiro), ar-condicionado e ambiente sereno inspirado nas cores do mar.',  alt: 'Suíte Horizonte Azul para grupos – aluguel de temporada Riviera de São Lourenço' },
-              { src: '/Villa Stories - 23.jpg', nome: 'Suíte Horizonte Verde', desc: '2 bicamas (4 camas de solteiro), ar-condicionado e sacada com vista para a área de lazer.',      alt: 'Suíte Horizonte Verde com sacada – Villa Entre Verdes, Riviera de São Lourenço' },
-              { src: '/Villa Stories - 24.jpg', nome: 'Suíte Horizonte Rosa',  desc: '2 bicamas (4 camas de solteiro), ar-condicionado e sacada com vista para a área de lazer.',      alt: 'Suíte Horizonte Rosa com sacada – Villa Entre Verdes, Riviera de São Lourenço' },
-              { src: '/Villa Stories - 25.jpg', nome: 'Suíte Pôr do Sol',      desc: '2 bicamas (4 camas de solteiro), ar-condicionado, vista encantadora para a natureza e banheiro reformado.', alt: 'Suíte Pôr do Sol – quarto com vista para natureza, Villa Entre Verdes Bertioga' },
-              { src: '/Villa Stories - 26.jpg', nome: 'Suíte Araucária',       desc: '2 bicamas (4 camas de solteiro), ar-condicionado e banheiro privativo.',                          alt: 'Suíte Araucária com banheiro privativo – Villa Entre Verdes, Riviera de São Lourenço' },
-              { src: '/Villa Stories - 27.jpg', nome: 'Suíte Terra',           desc: '2 bicamas (4 camas de solteiro), ar-condicionado e banheiro privativo.',                          alt: 'Suíte Terra – acomodação para grupos na Villa Entre Verdes, Bertioga SP' },
+              { src: '/Villa Stories - 20.jpg', bath: '/banheiro paraiso.jpeg',               nome: 'Suíte Paraíso',        desc: 'Cama queen, banheiro renovado, ar-condicionado e vista privilegiada para a natureza.',              alt: 'Suíte Paraíso – acomodação de luxo na Villa Entre Verdes, Riviera de São Lourenço',           acessivel: false },
+              { src: '/Villa Stories - 21.jpg', bath: '/banheiro praiamar.jpeg',               nome: 'Quarto Praiamar',       desc: 'Cama de casal, banheiro externo privativo, ar-condicionado, espaçoso e luminoso.',                alt: 'Quarto Praiamar com cama de casal – Villa Entre Verdes, Bertioga SP',                          acessivel: false },
+              { src: '/Villa Stories - 22.jpg', bath: '/Banheiro horizonte azul.jpeg',         nome: 'Suíte Horizonte Azul',  desc: '3 bicamas (6 camas de solteiro), ar-condicionado e ambiente sereno inspirado nas cores do mar.',  alt: 'Suíte Horizonte Azul para grupos – aluguel de temporada Riviera de São Lourenço',              acessivel: false },
+              { src: '/Villa Stories - 23.jpg', bath: '/banheiro horizonte verde.jpeg',        nome: 'Suíte Horizonte Verde', desc: '2 bicamas (4 camas de solteiro), ar-condicionado e sacada com vista para a área de lazer.',      alt: 'Suíte Horizonte Verde com sacada – Villa Entre Verdes, Riviera de São Lourenço',               acessivel: false },
+              { src: '/Villa Stories - 24.jpg', bath: '/banheiro horizonte rosa.jpeg',         nome: 'Suíte Horizonte Rosa',  desc: '2 bicamas (4 camas de solteiro), ar-condicionado e sacada com vista para a área de lazer.',      alt: 'Suíte Horizonte Rosa com sacada – Villa Entre Verdes, Riviera de São Lourenço',                acessivel: false },
+              { src: '/Villa Stories - 25.jpg', bath: '/banheiro pordosol.jpeg',               nome: 'Suíte Pôr do Sol',      desc: '2 bicamas (4 camas de solteiro), ar-condicionado, vista encantadora para a natureza e banheiro reformado.', alt: 'Suíte Pôr do Sol – quarto com vista para natureza, Villa Entre Verdes Bertioga',          acessivel: false },
+              { src: '/Villa Stories - 26.jpg', bath: '/banheiro araucaria acessivel idoso.jpeg', nome: 'Suíte Araucária',    desc: '2 bicamas (4 camas de solteiro), ar-condicionado, térreo. Banheiro adaptado com corrimão no box e na privada — ideal para idosos e pessoas com mobilidade reduzida.', alt: 'Suíte Araucária acessível com banheiro adaptado – Villa Entre Verdes, Riviera de São Lourenço', acessivel: true },
+              { src: '/Villa Stories - 27.jpg', bath: '/banheiro terra.jpeg',                  nome: 'Suíte Terra',           desc: '2 bicamas (4 camas de solteiro), ar-condicionado e banheiro privativo.',                          alt: 'Suíte Terra – acomodação para grupos na Villa Entre Verdes, Bertioga SP',                      acessivel: false },
             ].map((q, i) => (
               <div key={i} className="rounded-2xl overflow-hidden shadow-card hover:shadow-luxury transition-all duration-300 hover:-translate-y-1 bg-[#FAFAF7]">
-                <img src={q.src} alt={q.alt} className="w-full h-72 object-cover object-center" />
+                <div className="grid grid-cols-2 h-56">
+                  <div className="relative overflow-hidden">
+                    <img src={q.src} alt={q.alt} className="w-full h-full object-cover object-center" />
+                    <span className="absolute bottom-1 left-1 bg-black/50 text-white text-[10px] px-1.5 py-0.5 rounded">Quarto</span>
+                  </div>
+                  <div className="relative overflow-hidden border-l border-white/20">
+                    <img src={q.bath} alt={`Banheiro – ${q.nome}`} className="w-full h-full object-cover object-center" />
+                    <span className="absolute bottom-1 left-1 bg-black/50 text-white text-[10px] px-1.5 py-0.5 rounded">Banheiro</span>
+                  </div>
+                </div>
                 <div className="p-5">
-                  <h3 className="font-garamond font-bold text-lg text-[#2D5016] mb-1">{q.nome}</h3>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="font-garamond font-bold text-lg text-[#2D5016]">{q.nome}</h3>
+                    {q.acessivel && (
+                      <span className="text-[10px] bg-[#2D5016]/10 text-[#2D5016] border border-[#2D5016]/30 rounded-full px-2 py-0.5 font-medium whitespace-nowrap">
+                        ♿ Acessível
+                      </span>
+                    )}
+                  </div>
                   <p className="text-gray-500 text-xs leading-relaxed">{q.desc}</p>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Banheiros da área da piscina */}
+          <div className="mt-12">
+            <h3 className="font-garamond font-bold text-2xl text-[#2D5016] mb-6 text-center">Banheiros da Área da Piscina</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-2xl mx-auto">
+              <div className="rounded-2xl overflow-hidden shadow-card hover:shadow-luxury transition-all duration-300">
+                <img src="/Banheiro Piscina1.jpg" alt="Banheiro da piscina – Villa Entre Verdes" className="w-full h-64 object-cover object-center" />
+                <div className="p-4 bg-[#FAFAF7]">
+                  <p className="text-gray-500 text-xs">Banheiro da piscina — amplo e bem equipado para o conforto dos hóspedes durante o lazer.</p>
+                </div>
+              </div>
+              <div className="rounded-2xl overflow-hidden shadow-card hover:shadow-luxury transition-all duration-300">
+                <img src="/Banheiro Piscina 2 c chuveiro.jpg" alt="Banheiro da piscina com chuveiro – Villa Entre Verdes" className="w-full h-64 object-cover object-center" />
+                <div className="p-4 bg-[#FAFAF7]">
+                  <p className="text-gray-500 text-xs">Banheiro da piscina com box e chuveiro — ideal para se refrescar sem sair da área de lazer.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
