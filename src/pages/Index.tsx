@@ -366,13 +366,22 @@ export default function Index() {
               className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
           </div>
           {/* Linha 2: 3 fotos */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
             <img src="/SalaTV1.jpeg" alt="Sala de estar de alto padrão da Villa Entre Verdes em Bertioga"
               className="rounded-2xl shadow-card w-full h-64 object-cover hover:shadow-luxury transition-shadow duration-300" style={{ objectPosition: 'center 60%' }} />
             <img src="/salaodejogos.jpg" alt="Salão de jogos com sinuca – Villa Entre Verdes, Riviera de São Lourenço"
               className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
             <img src="/Sauna+Jacuzzi.jpeg" alt="Sauna e jacuzzi privativa da Villa Entre Verdes em Riviera de São Lourenço"
               className="rounded-2xl shadow-card w-full h-64 object-cover hover:shadow-luxury transition-shadow duration-300" style={{ objectPosition: 'center 60%' }} />
+          </div>
+          {/* Linha 3: 3 fotos */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <img src="/sala tv.jpeg" alt="Sala de TV da Villa Entre Verdes – ambiente de cinema para grupos em Bertioga"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/piscina noite.jpeg" alt="Piscina da Villa Entre Verdes iluminada à noite em Riviera de São Lourenço"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/Piscinasauna noite.jpeg" alt="Área da piscina e sauna iluminadas à noite – Villa Entre Verdes, Bertioga SP"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
           </div>
         </div>
       </section>
