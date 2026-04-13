@@ -181,9 +181,17 @@ export default function Index() {
               </span>
             </div>
 
-            <nav className="hidden md:flex items-center gap-8 text-white">
-              {[['#sobre', 'A VILLA'], ['#disponibilidade', 'DISPONIBILIDADE'], ['#pacotes', 'PACOTES'], ['#contato', 'CONTATO']].map(([href, label]) => (
-                <a key={href} href={href} className="text-sm font-medium hover:opacity-75 transition-opacity tracking-wide">
+            <nav className="hidden md:flex items-center gap-6 text-white">
+              {[
+                ['#quartos', 'QUARTOS'],
+                ['#tour', 'TOUR VIRTUAL'],
+                ['#riviera', 'A RIVIERA'],
+                ['#localizacao', 'LOCALIZAÇÃO'],
+                ['#depoimentos', 'DEPOIMENTOS'],
+                ['#disponibilidade', 'DISPONIBILIDADE'],
+                ['#contato', 'CONTATO'],
+              ].map(([href, label]) => (
+                <a key={href} href={href} className="text-xs font-medium hover:opacity-75 transition-opacity tracking-wide">
                   {label}
                 </a>
               ))}
@@ -201,7 +209,15 @@ export default function Index() {
           {/* Mobile Menu */}
           {menuOpen && (
             <div className="md:hidden bg-black/90 backdrop-blur-sm px-6 py-4 flex flex-col gap-4">
-              {[['#sobre', 'A VILLA'], ['#disponibilidade', 'DISPONIBILIDADE'], ['#pacotes', 'PACOTES'], ['#contato', 'CONTATO']].map(([href, label]) => (
+              {[
+                ['#quartos', 'QUARTOS'],
+                ['#tour', 'TOUR VIRTUAL'],
+                ['#riviera', 'A RIVIERA'],
+                ['#localizacao', 'LOCALIZAÇÃO'],
+                ['#depoimentos', 'DEPOIMENTOS'],
+                ['#disponibilidade', 'DISPONIBILIDADE'],
+                ['#contato', 'CONTATO'],
+              ].map(([href, label]) => (
                 <a key={href} href={href} className="text-white text-sm font-medium tracking-wide" onClick={() => setMenuOpen(false)}>
                   {label}
                 </a>
@@ -362,7 +378,7 @@ export default function Index() {
       </section>
 
       {/* ── Tour em Vídeo ─────────────────────────────────────────────────── */}
-      <section className="py-20 bg-white">
+      <section id="tour" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-garamond font-bold text-[#2D5016] mb-4">Tour pela Villa</h2>
@@ -396,7 +412,7 @@ export default function Index() {
       </section>
 
       {/* ── Suítes ────────────────────────────────────────────────────────── */}
-      <section className="py-20 bg-white">
+      <section id="quartos" className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-garamond font-bold text-[#2D5016] mb-4">8 quartos para grupos grandes com privacidade e alto padrão</h2>
@@ -494,7 +510,7 @@ export default function Index() {
       </section>
 
       {/* ── Localização ───────────────────────────────────────────────────── */}
-      <section className="py-20 bg-gradient-card">
+      <section id="localizacao" className="py-20 bg-gradient-card">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-garamond font-bold text-[#2D5016] mb-4">Localização Privilegiada</h2>
@@ -521,7 +537,7 @@ export default function Index() {
       </section>
 
       {/* ── Riviera de São Lourenço ───────────────────────────────────────── */}
-      <section className="py-20 bg-[#F4F1EB]">
+      <section id="riviera" className="py-20 bg-[#F4F1EB]">
         <div className="container mx-auto px-4">
 
           {/* Cabeçalho */}
@@ -712,7 +728,7 @@ export default function Index() {
       </section>
 
       {/* ── Depoimentos ───────────────────────────────────────────────────── */}
-      <section className="py-20 bg-[#F4F1EB]">
+      <section id="depoimentos" className="py-20 bg-[#F4F1EB]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <div className="flex items-center justify-center gap-1 mb-4">
