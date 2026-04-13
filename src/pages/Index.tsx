@@ -379,9 +379,9 @@ export default function Index() {
             <img src="/sala tv.jpeg" alt="Sala de TV da Villa Entre Verdes – ambiente de cinema para grupos em Bertioga"
               className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
             <img src="/piscina noite.jpeg" alt="Piscina da Villa Entre Verdes iluminada à noite em Riviera de São Lourenço"
-              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+              className="rounded-2xl shadow-card w-full h-64 object-cover hover:shadow-luxury transition-shadow duration-300" style={{ objectPosition: 'center 65%' }} />
             <img src="/Piscinasauna noite.jpeg" alt="Área da piscina e sauna iluminadas à noite – Villa Entre Verdes, Bertioga SP"
-              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+              className="rounded-2xl shadow-card w-full h-64 object-cover hover:shadow-luxury transition-shadow duration-300" style={{ objectPosition: 'center 65%' }} />
           </div>
         </div>
       </section>
