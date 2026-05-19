@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {
   MapPin, Users, Home, Star, Phone, Mail, Car, Waves, TreePine,
   Camera, MessageCircle, Heart, Briefcase, Utensils, Wifi, Wind,
   Tv, Shield, ChefHat, Music, Calendar, Clock, PartyPopper,
   Dumbbell, Sparkles, Menu, X, Award, Bike, Microscope, Leaf,
   BedDouble, Flame, Bath, Activity, Gamepad2, Thermometer,
+  ChevronLeft, ChevronRight,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
@@ -161,10 +162,47 @@ const faqItems = [
   },
 ]
 
+// ── Hero images ───────────────────────────────────────────────────────────────
+
+const heroImages = [
+  { src: '/Foto Capa 3.jpeg',           alt: 'Vista aérea da piscina orgânica da Villa Entre Verdes rodeada pelo jardim tropical em Riviera de São Lourenço' },
+  { src: '/11052026-DSCF0009-2.jpeg',   alt: 'Espreguiçadeiras e fogueira acesa à beira da piscina ao entardecer – Villa Entre Verdes, Riviera de São Lourenço' },
+  { src: '/12052026-DSCF0601.jpeg',     alt: 'Jardim com chuveiro externo de madeira, espreguiçadeiras e fachada da Villa Entre Verdes' },
+  { src: '/12052026-DSCF0806.jpeg',     alt: 'Villa Entre Verdes iluminada ao entardecer com reflexo na piscina – Riviera de São Lourenço' },
+  { src: '/Foto Capa1.jpeg',            alt: 'Villa Entre Verdes – fachada completa com piscina privativa, espreguiçadeiras e jardim em Riviera de São Lourenço' },
+]
+
 // ── Component ─────────────────────────────────────────────────────────────────
 
 export default function Index() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const [heroIndex, setHeroIndex] = useState(0)
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
+
+  function startInterval() {
+    if (intervalRef.current) clearInterval(intervalRef.current)
+    intervalRef.current = setInterval(() => {
+      setHeroIndex(i => (i + 1) % heroImages.length)
+    }, 7000)
+  }
+
+  useEffect(() => {
+    startInterval()
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current) }
+  }, [])
+
+  function heroPrev() {
+    setHeroIndex(i => (i - 1 + heroImages.length) % heroImages.length)
+    startInterval()
+  }
+  function heroNext() {
+    setHeroIndex(i => (i + 1) % heroImages.length)
+    startInterval()
+  }
+  function heroGoto(i: number) {
+    setHeroIndex(i)
+    startInterval()
+  }
 
   return (
     <div className="min-h-screen bg-[#FAFAF7]">
@@ -226,15 +264,46 @@ export default function Index() {
           )}
         </header>
 
-        {/* Background */}
+        {/* Background carousel */}
         <div className="absolute inset-0 z-0">
-          <img
-            src="/Foto capa.jpeg"
-            alt="Villa Entre Verdes – casa de aluguel de temporada para grupos em Riviera de São Lourenço, Bertioga/SP"
-            className="w-full h-full object-cover object-center"
-          />
+          {heroImages.map((img, i) => (
+            <div
+              key={i}
+              className={`absolute inset-0 transition-opacity duration-700 ${i === heroIndex ? 'opacity-100' : 'opacity-0'}`}
+            >
+              <img src={img.src} alt={img.alt} className="w-full h-full object-cover object-center" />
+            </div>
+          ))}
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50 z-10" />
+
+        {/* Carousel arrows */}
+        <button
+          onClick={heroPrev}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-40 bg-black/30 hover:bg-black/50 text-white rounded-full p-3 transition-colors"
+          aria-label="Foto anterior"
+        >
+          <ChevronLeft className="h-6 w-6" />
+        </button>
+        <button
+          onClick={heroNext}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-40 bg-black/30 hover:bg-black/50 text-white rounded-full p-3 transition-colors"
+          aria-label="Próxima foto"
+        >
+          <ChevronRight className="h-6 w-6" />
+        </button>
+
+        {/* Dot indicators */}
+        <div className="absolute bottom-28 left-1/2 -translate-x-1/2 z-40 flex gap-2 items-center">
+          {heroImages.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => heroGoto(i)}
+              className={`h-2 rounded-full transition-all duration-300 ${i === heroIndex ? 'bg-white w-6' : 'bg-white/50 w-2'}`}
+              aria-label={`Foto ${i + 1}`}
+            />
+          ))}
+        </div>
 
         {/* Hero text */}
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4">
@@ -375,13 +444,76 @@ export default function Index() {
               className="rounded-2xl shadow-card w-full h-64 object-cover hover:shadow-luxury transition-shadow duration-300" style={{ objectPosition: 'center 60%' }} />
           </div>
           {/* Linha 3: 3 fotos */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
             <img src="/sala tv.jpeg" alt="Sala de TV da Villa Entre Verdes – ambiente de cinema para grupos em Bertioga"
               className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
             <img src="/piscina noite.jpeg" alt="Piscina da Villa Entre Verdes iluminada à noite em Riviera de São Lourenço"
               className="rounded-2xl shadow-card w-full h-64 object-cover hover:shadow-luxury transition-shadow duration-300" style={{ objectPosition: 'center 80%' }} />
             <img src="/Piscinasauna noite.jpeg" alt="Área da piscina e sauna iluminadas à noite – Villa Entre Verdes, Bertioga SP"
               className="rounded-2xl shadow-card w-full h-64 object-cover hover:shadow-luxury transition-shadow duration-300" style={{ objectPosition: 'center 80%' }} />
+          </div>
+          {/* Linha 4: fachada completa */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <img src="/12052026-DSCF0534.jpeg" alt="Fachada completa da Villa Entre Verdes com piscina, espreguiçadeiras e hammock em Riviera de São Lourenço"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/12052026-DSCF0563.jpeg" alt="Villa Entre Verdes vista do jardim com piscina em primeiro plano e vegetação tropical"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/12052026-DSCF0501.jpeg" alt="Fachada lateral da Villa Entre Verdes com jardim, espreguiçadeiras e quadra de areia ao fundo"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+          </div>
+          {/* Linha 5: lifestyle piscina */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <img src="/12052026-DSCF0084.jpeg" alt="Espreguiçadeira à beira da piscina com coco verde e livro – Villa Entre Verdes, Riviera de São Lourenço"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/12052026-DSCF0095.jpeg" alt="Hóspede relaxando na espreguiçadeira à beira da piscina rodeada por jardim tropical – Villa Entre Verdes"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/11052026-DSCF0022-2.jpeg" alt="Sauna com parede de vidro iluminada à noite ao lado da piscina – Villa Entre Verdes"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+          </div>
+          {/* Linha 6: noite detalhes + drone */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <img src="/11052026-DSCF0019-2.jpeg" alt="Espreguiçadeira e fogueira ao lado da piscina iluminada à noite – Villa Entre Verdes, Bertioga SP"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/12052026-DJI_20260512110956_0928_D.jpeg" alt="Vista aérea de drone da Villa Entre Verdes mostrando piscina, quadra de areia e jardim em Riviera de São Lourenço"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/12052026-DSCF0667.jpeg" alt="Fachada lateral da Villa Entre Verdes com jardim tropical e coqueiros em Bertioga SP"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+          </div>
+          {/* Linha 7: café da manhã */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <img src="/12052026-DSCF0363-HDR.jpeg" alt="Café da manhã completo servido ao ar livre com mesa farta e piscina ao fundo – Villa Entre Verdes"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/12052026-DSCF0070.jpeg" alt="Café sendo servido na xícara com frutas frescas na mesa ao ar livre – Villa Entre Verdes"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/12052026-DSCF0180.jpeg" alt="Chuveiro externo de madeira com espreguiçadeiras no jardim – Villa Entre Verdes, Riviera de São Lourenço"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+          </div>
+          {/* Linha 8: interiores */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <img src="/12052026-DSCF0390.jpeg" alt="Sala de estar integrada com TV, sofá e escada de madeira – Villa Entre Verdes"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/12052026-DSCF0396.jpeg" alt="Hall de entrada com escada de madeira, plantas e integração com o jardim – Villa Entre Verdes"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/12052026-DSCF0709.jpeg" alt="Cozinha gourmet completa com dois refrigeradores e bancada de granito – Villa Entre Verdes"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+          </div>
+          {/* Linha 9: quartos novos */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+            <img src="/11052026-DSCF0007.jpeg" alt="Suíte com cama de casal, cabeceira de madeira e vista para o jardim – Villa Entre Verdes"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/11052026-DSCF0210.jpeg" alt="Quarto com duas camas de solteiro, decoração artística e porta de vidro com vista para jardim – Villa Entre Verdes"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/12052026-DSCF0431.jpeg" alt="Quarto com camas de solteiro em tons rosé e decoração com arte folhagem – Villa Entre Verdes"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+          </div>
+          {/* Linha 10: salão de jogos, sauna e banheiro */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <img src="/11052026-DSCF0099.jpeg" alt="Salão de jogos com mesa de sinuca e cozinha gourmet integrada à área externa – Villa Entre Verdes"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/12052026-DSCF0638.jpeg" alt="Interior da sauna revestida com azulejo verde e porta de vidro com vista para o jardim – Villa Entre Verdes"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
+            <img src="/11052026-DSCF0085.jpeg" alt="Banheiro moderno com acabamento clean, box de vidro e cuba esculpida – Villa Entre Verdes"
+              className="rounded-2xl shadow-card w-full h-64 object-cover object-center hover:shadow-luxury transition-shadow duration-300" />
           </div>
         </div>
       </section>
