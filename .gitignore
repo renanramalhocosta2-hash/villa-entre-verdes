@@ -3,3 +3,13 @@ dist/
 .env
 .env.local
 *.local
+
+# Local Netlify folder
+.netlify
+
+# Assets brutos de marketing (386MB) — não pertencem ao repo do site
+VillaMarketing/
+
+# Scripts/dados locais com senha ou temporários
+import-prices.mjs
+pricing-temp.json

@@ -26,6 +26,31 @@
     font-family: 'EB Garamond', Georgia, serif;
   }
 
+  /* Hero: zoom lento e sutil (Ken Burns) na foto ativa */
+  @keyframes kenburns {
+    from { transform: scale(1); }
+    to   { transform: scale(1.07); }
+  }
+  .animate-kenburns {
+    animation: kenburns 9s ease-out forwards;
+    will-change: transform;
+  }
+
+  /* Scroll reveal: blocos surgem suavemente ao entrar na tela */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .animate-kenburns { animation: none; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
   .shadow-card {
     box-shadow: 0 2px 16px rgba(0,0,0,0.08);
   }
