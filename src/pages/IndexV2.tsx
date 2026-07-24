@@ -462,10 +462,10 @@ export default function IndexV2() {
                 Ver datas disponíveis →
               </Button>
             </a>
-            {/* Segundo botão — oculto no mobile para não conflitar */}
-            <a href={WA_ORCAMENTO} target="_blank" rel="noopener noreferrer" className="hidden sm:block">
+            {/* Segundo botão — oculto no mobile para não conflitar; leva ao calendário para montar o orçamento */}
+            <a href="#disponibilidade" className="hidden sm:block">
               <Button size="lg" variant="outline" className="border-white/60 text-white hover:bg-white/15 font-medium px-8 py-6 text-base rounded-full backdrop-blur-sm">
-                Pedir orçamento agora
+                Fazer orçamento agora
               </Button>
             </a>
           </div>
