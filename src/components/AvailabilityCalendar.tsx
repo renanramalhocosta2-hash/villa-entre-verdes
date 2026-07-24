@@ -77,11 +77,12 @@ interface MonthProps {
   onSelect: (d: Date) => void
   onHover: (d: Date | null) => void
   today: Date
+  maxDate: Date
   pricing: PricingConfig
   showPrices: boolean
 }
 
-function MonthGrid({ year, month, blocked, checkIn, checkOut, hovered, onSelect, onHover, today, pricing, showPrices }: MonthProps) {
+function MonthGrid({ year, month, blocked, checkIn, checkOut, hovered, onSelect, onHover, today, maxDate, pricing, showPrices }: MonthProps) {
   const firstDay = new Date(year, month, 1).getDay()
   const daysInMonth = new Date(year, month + 1, 0).getDate()
   const rangeEnd = checkOut ?? hovered
@@ -89,8 +90,9 @@ function MonthGrid({ year, month, blocked, checkIn, checkOut, hovered, onSelect,
   function dayClasses(day: number) {
     const d = new Date(year, month, day)
     const past = isBefore(d, today) && !sameDay(d, today)
+    const beyond = isBefore(maxDate, d)
     const occupied = isDateBlocked(d, blocked)
-    if (past || occupied) return 'text-gray-300 line-through cursor-not-allowed select-none'
+    if (past || beyond || occupied) return 'text-gray-300 line-through cursor-not-allowed select-none'
 
     const isCI = checkIn && sameDay(d, checkIn)
     const isCO = checkOut && sameDay(d, checkOut)
@@ -120,8 +122,9 @@ function MonthGrid({ year, month, blocked, checkIn, checkOut, hovered, onSelect,
         {Array.from({ length: daysInMonth }, (_, i) => i + 1).map(day => {
           const d = new Date(year, month, day)
           const past = isBefore(d, today) && !sameDay(d, today)
+          const beyond = isBefore(maxDate, d)
           const occupied = isDateBlocked(d, blocked)
-          const disabled = past || occupied
+          const disabled = past || beyond || occupied
           const price = !disabled ? getPriceForDate(d, pricing) : null
           const isSelected = (checkIn && sameDay(d, checkIn)) || (checkOut && sameDay(d, checkOut))
 
@@ -188,6 +191,10 @@ export function AvailabilityCalendar() {
   const today = new Date()
   today.setHours(0, 0, 0, 0)
 
+  // Datas abertas somente até 1 ano a partir de hoje (janela rolante)
+  const maxDate = new Date(today)
+  maxDate.setFullYear(maxDate.getFullYear() + 1)
+
   const [startMonth, setStartMonth] = useState({ year: today.getFullYear(), month: today.getMonth() })
   const [blocked, setBlocked] = useState<{ start: Date; end: Date }[]>([])
   const [loading, setLoading] = useState(true)
@@ -214,9 +221,15 @@ export function AvailabilityCalendar() {
       .finally(() => setLoading(false))
   }, [])
 
+  // Último mês navegável = mês de maxDate
+  const lastNavMonth = new Date(maxDate.getFullYear(), maxDate.getMonth(), 1)
+  const canGoNext = new Date(startMonth.year, startMonth.month + 2, 1) <= lastNavMonth
+
   function nextMonth2() {
     const d = new Date(startMonth.year, startMonth.month + 2, 1)
-    setStartMonth({ year: d.getFullYear(), month: d.getMonth() })
+    if (d <= lastNavMonth) {
+      setStartMonth({ year: d.getFullYear(), month: d.getMonth() })
+    }
   }
 
   function prevMonth2() {
@@ -291,7 +304,12 @@ export function AvailabilityCalendar() {
                 <ChevronLeft className="h-5 w-5 text-[#2D5016]" />
               </button>
               <div className="flex-1" />
-              <button onClick={nextMonth2} className="p-2 rounded-full hover:bg-gray-100 transition-colors" aria-label="Próximo mês">
+              <button
+                onClick={nextMonth2}
+                disabled={!canGoNext}
+                className={`p-2 rounded-full transition-colors ${canGoNext ? 'hover:bg-gray-100' : 'opacity-30 cursor-not-allowed'}`}
+                aria-label="Próximo mês"
+              >
                 <ChevronRight className="h-5 w-5 text-[#2D5016]" />
               </button>
             </div>
@@ -301,14 +319,14 @@ export function AvailabilityCalendar() {
                 year={startMonth.year} month={startMonth.month}
                 blocked={blocked} checkIn={checkIn} checkOut={checkOut}
                 hovered={hovered} onSelect={handleSelect} onHover={setHovered}
-                today={today} pricing={pricing}
+                today={today} maxDate={maxDate} pricing={pricing}
                 showPrices={pricing.rules.length > 0}
               />
               <MonthGrid
                 year={month2.getFullYear()} month={month2.getMonth()}
                 blocked={blocked} checkIn={checkIn} checkOut={checkOut}
                 hovered={hovered} onSelect={handleSelect} onHover={setHovered}
-                today={today} pricing={pricing}
+                today={today} maxDate={maxDate} pricing={pricing}
                 showPrices={pricing.rules.length > 0}
               />
             </div>

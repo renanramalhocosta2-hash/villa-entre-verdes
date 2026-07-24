@@ -81,9 +81,8 @@ function holidayTemplates(year: number): HolidayTemplate[] {
   ]
 }
 
-// Returns price for a specific date based on rules. Shorter (more specific) rules win.
-export function getPriceForDate(date: Date, config: PricingConfig): number {
-  const d = toYMD(date)
+// Busca preço nas regras para uma data YYYY-MM-DD. Regras mais curtas (específicas) vencem.
+function priceFromRules(d: string, config: PricingConfig): number | null {
   const sorted = [...config.rules].sort((a, b) => {
     const lenA = new Date(a.to).getTime() - new Date(a.from).getTime()
     const lenB = new Date(b.to).getTime() - new Date(b.from).getTime()
@@ -92,6 +91,20 @@ export function getPriceForDate(date: Date, config: PricingConfig): number {
   for (const rule of sorted) {
     if (d >= rule.from && d <= rule.to) return rule.pricePerNight
   }
+  return null
+}
+
+// Returns price for a specific date based on rules. Shorter (more specific) rules win.
+// Datas sem regra herdam o preço da mesma data no ano anterior (janela rolante de 1 ano).
+export function getPriceForDate(date: Date, config: PricingConfig): number {
+  const d = toYMD(date)
+  const direct = priceFromRules(d, config)
+  if (direct !== null) return direct
+
+  const lastYear = String(Number(d.slice(0, 4)) - 1) + d.slice(4)
+  const inherited = priceFromRules(lastYear, config)
+  if (inherited !== null) return inherited
+
   // Fallback to base price
   const dow = date.getDay()
   return dow === 0 || dow === 5 || dow === 6 ? config.baseWeekend : config.baseWeekday
