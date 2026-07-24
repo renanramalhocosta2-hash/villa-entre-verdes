@@ -459,13 +459,13 @@ export default function IndexV2() {
           <div className="flex flex-col sm:flex-row gap-3 items-center">
             <a href="#disponibilidade">
               <Button size="lg" className="bg-white text-[#2D5016] hover:bg-white/90 font-semibold px-8 py-6 text-base rounded-full shadow-luxury">
-                Ver datas disponíveis →
+                Fazer orçamento agora →
               </Button>
             </a>
-            {/* Segundo botão — oculto no mobile para não conflitar; leva ao calendário para montar o orçamento */}
-            <a href="#disponibilidade" className="hidden sm:block">
+            {/* Segundo botão — oculto no mobile para não conflitar; leva à galeria de fotos */}
+            <a href="#galeria" className="hidden sm:block">
               <Button size="lg" variant="outline" className="border-white/60 text-white hover:bg-white/15 font-medium px-8 py-6 text-base rounded-full backdrop-blur-sm">
-                Fazer orçamento agora
+                Ver a Villa por dentro
               </Button>
             </a>
           </div>
@@ -570,7 +570,7 @@ export default function IndexV2() {
       </section>
 
       {/* ── [V2] Galeria com lightbox ─────────────────────────────────────── */}
-      <section className="py-20 bg-gradient-card">
+      <section id="galeria" className="py-20 bg-gradient-card">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12" data-reveal>
             <Eyebrow>Galeria</Eyebrow>
