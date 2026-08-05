@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import {
   MapPin, Users, Home, Star, Phone, Mail, Car, Waves, TreePine,
-  Camera, MessageCircle, Heart, Briefcase, Utensils, Wifi, Wind,
+  Camera, MessageCircle, Briefcase, Utensils, Wifi, Wind,
   Tv, Shield, ChefHat, Music, Calendar, Clock, PartyPopper,
-  Dumbbell, Sparkles, Menu, X, Award, Bike, Microscope, Leaf,
+  Footprints, Sparkles, Menu, X, Award, Bike, Microscope, Leaf,
   BedDouble, Flame, Bath, Activity, Gamepad2, Thermometer,
   ChevronLeft, ChevronRight, ZoomIn,
 } from 'lucide-react'
@@ -20,9 +20,11 @@ function waLink(msg: string) {
   return WA_BASE + encodeURIComponent(msg)
 }
 
-function waPacote(nome: string) {
-  return waLink(`Olá! Tenho interesse no pacote "${nome}" da Villa Entre Verdes. Pode me enviar mais informações e disponibilidade?`)
+function waExperiencia(nome: string) {
+  return waLink(`Olá! Tenho interesse na experiência "${nome}" da Villa Entre Verdes. Pode me enviar mais informações e disponibilidade?`)
 }
+
+const WA_SUGESTAO = waLink('Olá! Gostaria de sugerir/indicar uma experiência para a Villa Entre Verdes.')
 
 function waEvento(tipo: string) {
   return waLink(`Olá! Gostaria de saber mais sobre o "${tipo}" da Villa Entre Verdes. Pode me enviar valores e disponibilidade?`)
@@ -39,48 +41,34 @@ const features = [
   { icon: TreePine, title: 'Estrutura completa',        description: 'Piscina, quadra, área gourmet e salões' },
 ]
 
-const villaPackages = [
+// ── [V3] Experiências exclusivas — atividades para cuidar do corpo e da mente ─
+const experiences = [
   {
-    icon: Heart,
-    title: 'Wellness Experience',
-    subtitle: 'Relaxamento, bem-estar e reconexão com a natureza',
-    features: [
-      'Hospedagem completa na Villa Entre Verdes',
-      'Acesso à sauna, jacuzzi e piscina aquecida',
-      'Sessão de yoga ou meditação guiada (1x por dia)',
-      'Menu saudável (opcional, sob encomenda)',
-      'Espaço zen com aromaterapia e música ambiente',
-    ],
-    target: 'Grupos de mulheres, retiros, casais, eventos de autocuidado',
-    gradient: 'from-green-50 to-emerald-50',
-  },
-  {
-    icon: Dumbbell,
-    title: 'Fitness Retreat',
-    subtitle: 'Performance, energia e rotina saudável',
-    features: [
-      'Hospedagem completa na Villa',
-      'Treinos funcionais ou beach tennis com instrutor',
-      'Acesso à sauna, piscina e quadra de areia',
-      'Alimentação balanceada (opcional)',
-      'Espaço para workshops de saúde e nutrição',
-    ],
-    target: 'Academias, grupos esportivos, empresas e influenciadores fitness',
+    icon: Activity,
+    title: 'Aula de Beach Tênis',
+    duracao: '2 horas',
+    participantes: '10 pessoas',
+    detalhe: 'Com professor de referência',
+    valor: 'R$ 900,00',
     gradient: 'from-amber-50 to-orange-50',
   },
   {
-    icon: PartyPopper,
-    title: 'Party & Celebration',
-    subtitle: 'Comemorações inesquecíveis e experiências sociais',
-    features: [
-      'Hospedagem completa na Villa',
-      'Estrutura para festas, aniversários e mini weddings',
-      'Espaço gourmet, bar e som ambiente',
-      'Decoração personalizada e parceiros de eventos opcionais',
-      'Concierge de apoio e limpeza durante o evento',
-    ],
-    target: 'Aniversários, casamentos íntimos, eventos corporativos',
-    gradient: 'from-rose-50 to-pink-50',
+    icon: Footprints,
+    title: 'Grupo de Corrida',
+    duracao: '1 hora e 30 minutos',
+    participantes: '10 pessoas',
+    detalhe: 'Treino orientado para grupos',
+    valor: 'R$ 900,00',
+    gradient: 'from-sky-50 to-cyan-50',
+  },
+  {
+    icon: Leaf,
+    title: 'Aula de Yoga',
+    duracao: '1 hora e 30 minutos',
+    participantes: '10 pessoas',
+    detalhe: 'Aula conduzida por instrutor especializado',
+    valor: 'R$ 1.200,00',
+    gradient: 'from-green-50 to-emerald-50',
     featured: true,
   },
 ]
@@ -348,6 +336,7 @@ export default function IndexV2() {
             <nav className="hidden md:flex items-center gap-6 text-white">
               {[
                 ['#quartos',        'QUARTOS'],
+                ['#experiencias',   'EXPERIÊNCIAS'],
                 ['#tour',           'TOUR VIRTUAL'],
                 ['#riviera',        'A RIVIERA'],
                 ['#localizacao',    'LOCALIZAÇÃO'],
@@ -368,6 +357,7 @@ export default function IndexV2() {
             <div className="md:hidden bg-black/90 backdrop-blur-sm px-6 py-4 flex flex-col gap-4">
               {[
                 ['#quartos',        'QUARTOS'],
+                ['#experiencias',   'EXPERIÊNCIAS'],
                 ['#tour',           'TOUR VIRTUAL'],
                 ['#riviera',        'A RIVIERA'],
                 ['#localizacao',    'LOCALIZAÇÃO'],
@@ -483,9 +473,9 @@ export default function IndexV2() {
                 <Users className="h-5 w-5 text-[#2D5016] shrink-0" />
                 <span className="text-sm text-gray-600">Até 22 hóspedes / 50 convidados</span>
               </a>
-              <a href="#disponibilidade" className="flex-1 px-6 py-4 flex items-center gap-3 hover:bg-gray-50 transition-colors">
+              <a href="#experiencias" className="flex-1 px-6 py-4 flex items-center gap-3 hover:bg-gray-50 transition-colors">
                 <PartyPopper className="h-5 w-5 text-[#2D5016] shrink-0" />
-                <span className="text-sm text-gray-600">Ver pacotes e eventos</span>
+                <span className="text-sm text-gray-600">Ver experiências e eventos</span>
               </a>
               <a href={WA_ORCAMENTO} target="_blank" rel="noopener noreferrer" className="shrink-0">
                 <Button className="h-full bg-[#2D5016] hover:bg-[#2D5016]/90 text-white rounded-none px-8 font-medium">
@@ -790,50 +780,69 @@ export default function IndexV2() {
         </div>
       </section>
 
-      {/* ── Pacotes Villa ─────────────────────────────────────────────────── */}
-      <section id="pacotes" className="py-20 bg-gradient-card">
+      {/* ── [V3] Experiências Villa Entre Verdes ──────────────────────────── */}
+      <section id="experiencias" className="py-20 bg-gradient-card">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16" data-reveal>
             <Sparkles className="h-12 w-12 text-[#B8860B] mx-auto mb-4" />
-            <Eyebrow>Experiências</Eyebrow>
-            <h2 className="text-4xl md:text-5xl font-garamond font-bold text-[#2D5016] mb-4">Pacotes Villa Entre Verdes</h2>
-            <p className="text-lg text-gray-500 max-w-2xl mx-auto">Experiências únicas pensadas para diferentes momentos da sua vida</p>
+            <Eyebrow>Exclusivas</Eyebrow>
+            <h2 className="text-4xl md:text-5xl font-garamond font-bold text-[#2D5016] mb-4">Experiências Villa Entre Verdes</h2>
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto">
+              Atividades especiais para cuidar do corpo e da mente, conduzidas por profissionais, sem sair da Villa.
+            </p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-            {villaPackages.map((pkg, i) => (
-              <Card key={i} className={`overflow-hidden shadow-card hover:shadow-luxury transition-all duration-300 hover:-translate-y-2 ${pkg.featured ? 'ring-2 ring-[#B8860B]' : ''}`}>
-                <div className={`bg-gradient-to-br ${pkg.gradient} p-8 text-center border-b border-gray-100`}>
-                  <pkg.icon className="h-16 w-16 text-[#2D5016] mx-auto mb-4" />
-                  <h3 className="text-2xl font-garamond font-bold text-[#1A1A1A] mb-2">{pkg.title}</h3>
-                  <p className="text-sm text-gray-500 italic">{pkg.subtitle}</p>
-                </div>
-                <CardContent className="p-6 space-y-6">
-                  <div>
-                    <h4 className="font-semibold text-[#2D5016] mb-3 flex items-center gap-2">
-                      <Star className="h-4 w-4" /> O que inclui:
-                    </h4>
-                    <ul className="space-y-2">
-                      {pkg.features.map((f, j) => (
-                        <li key={j} className="flex items-start gap-2 text-sm">
-                          <span className="text-[#B8860B] mt-1">•</span>
-                          <span className="text-gray-500">{f}</span>
-                        </li>
-                      ))}
-                    </ul>
+
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+            {experiences.map((exp, i) => (
+              <Card key={i} className={`overflow-hidden shadow-card hover:shadow-luxury transition-all duration-300 hover:-translate-y-2 ${exp.featured ? 'ring-2 ring-[#B8860B]' : ''}`}>
+                <div className={`bg-gradient-to-br ${exp.gradient} p-8 text-center border-b border-gray-100`}>
+                  <div className="bg-[#2D5016] rounded-full h-16 w-16 flex items-center justify-center mx-auto mb-4 shadow-sm">
+                    <exp.icon className="h-8 w-8 text-white" strokeWidth={1.75} />
                   </div>
+                  <p className="text-xs uppercase tracking-[0.2em] text-gray-400 mb-1">Experiência</p>
+                  <h3 className="text-2xl font-garamond font-bold text-[#1A1A1A]">{exp.title}</h3>
+                </div>
+                <CardContent className="p-6 space-y-5">
+                  <ul className="space-y-3 text-sm">
+                    <li className="flex items-center gap-3">
+                      <Clock className="h-4 w-4 text-[#2D5016] shrink-0" />
+                      <span className="text-gray-500"><strong className="text-[#1A1A1A] font-semibold">Duração:</strong> {exp.duracao}</span>
+                    </li>
+                    <li className="flex items-center gap-3">
+                      <Users className="h-4 w-4 text-[#2D5016] shrink-0" />
+                      <span className="text-gray-500"><strong className="text-[#1A1A1A] font-semibold">Participantes:</strong> {exp.participantes}</span>
+                    </li>
+                    <li className="flex items-start gap-3">
+                      <Award className="h-4 w-4 text-[#2D5016] shrink-0 mt-0.5" />
+                      <span className="text-gray-500">{exp.detalhe}</span>
+                    </li>
+                  </ul>
                   <div className="pt-4 border-t border-gray-100">
-                    <p className="text-xs text-gray-400 mb-3">
-                      <Users className="h-3 w-3 inline mr-1" />{pkg.target}
-                    </p>
-                    <a href={waPacote(pkg.title)} target="_blank" rel="noopener noreferrer" className="block">
+                    <p className="text-[10px] uppercase tracking-[0.25em] text-gray-400 mb-0.5">Valor</p>
+                    <p className="text-[#B8860B] font-semibold text-xl mb-4">{exp.valor}</p>
+                    <a href={waExperiencia(exp.title)} target="_blank" rel="noopener noreferrer" className="block">
                       <Button className="w-full bg-[#2D5016] hover:bg-[#2D5016]/90 text-white font-semibold" size="lg">
-                        Faça seu orçamento
+                        Quero essa experiência
                       </Button>
                     </a>
                   </div>
                 </CardContent>
               </Card>
             ))}
+          </div>
+
+          {/* Observação sobre grupos maiores */}
+          <div className="max-w-3xl mx-auto mb-12 bg-[#F4F1EB] border border-[#E5E5DC] rounded-2xl p-6 flex items-start gap-4">
+            <div className="bg-[#2D5016] rounded-full p-2 shrink-0">
+              <Sparkles className="h-4 w-4 text-white" />
+            </div>
+            <div>
+              <p className="font-semibold text-[#2D5016] mb-1">Informações importantes</p>
+              <p className="text-sm text-gray-500 leading-relaxed">
+                Para grupos acima de 10 pessoas, será cobrado o valor adicional de <strong className="text-[#1A1A1A]">R$ 100,00 por pessoa</strong>.
+                Todas as experiências são agendadas previamente conforme a disponibilidade dos profissionais.
+              </p>
+            </div>
           </div>
           <div className="mt-16">
             <h3 className="text-3xl font-garamond font-bold text-[#2D5016] text-center mb-10">Formatos de Evento</h3>
@@ -861,6 +870,28 @@ export default function IndexV2() {
                 </Card>
               ))}
             </div>
+          </div>
+
+          {/* [V3] Experiências complementares + convite a sugestões */}
+          <div className="mt-16 max-w-3xl mx-auto text-center bg-white rounded-2xl shadow-card p-10" data-reveal>
+            <MessageCircle className="h-10 w-10 text-[#B8860B] mx-auto mb-4" strokeWidth={1.5} />
+            <h3 className="text-2xl md:text-3xl font-garamond font-bold text-[#2D5016] mb-3">
+              Novas experiências chegando à Villa
+            </h3>
+            <p className="text-gray-500 leading-relaxed mb-3">
+              Estamos sempre ampliando o que a Villa oferece: massagem e spa, chef exclusivo, coquetelaria,
+              passeios pela Riviera, aulas de surf e muito mais, sempre com profissionais de confiança.
+            </p>
+            <p className="text-gray-500 leading-relaxed mb-8">
+              Tem alguma experiência em mente ou quer indicar um profissional? Vamos adorar receber sua
+              sugestão e montar algo sob medida para o seu grupo.
+            </p>
+            <a href={WA_SUGESTAO} target="_blank" rel="noopener noreferrer">
+              <Button size="lg" className="bg-green-600 hover:bg-green-700 text-white font-semibold rounded-full px-8">
+                <MessageCircle className="h-5 w-5 mr-2" />
+                Enviar sugestão pelo WhatsApp
+              </Button>
+            </a>
           </div>
         </div>
       </section>
@@ -1035,7 +1066,7 @@ export default function IndexV2() {
                 <a href="#disponibilidade" className="hover:text-white transition-colors">Disponibilidade</a>
                 <a href="#quartos" className="hover:text-white transition-colors">Suítes</a>
                 <a href="#tour" className="hover:text-white transition-colors">Tour em vídeo</a>
-                <a href="#pacotes" className="hover:text-white transition-colors">Pacotes e eventos</a>
+                <a href="#experiencias" className="hover:text-white transition-colors">Experiências e eventos</a>
                 <a href="#depoimentos" className="hover:text-white transition-colors">Depoimentos</a>
                 <a href="#riviera" className="hover:text-white transition-colors">A Riviera</a>
               </nav>
